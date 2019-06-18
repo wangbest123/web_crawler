@@ -78,22 +78,19 @@ public class FileOp {
     public static String readCsv(String fileName) {
         // 小萌萌实现 本地文件读入
 
-        String data = "";
-
+StringBuffer buffer = new StringBuffer();
         try {
             BufferedReader buff = new BufferedReader(new FileReader(fileName));
             String line = "";
             while ((line = buff.readLine()) != null) {
-
-                String item[] = line.split(",");
-                data += item[item.length - 1];
-                System.out.println("csv " + data);
+               buffer.append(line.trim());
+                buffer.append("\n");
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return data;
+        return buffer.toString();
     }
 
     public static void readExcel(String fileName) {
@@ -126,7 +123,8 @@ public class FileOp {
          FileOp fileOp = new FileOp();
          fileOp.toCsv("E:/b.csv","李四" + "," + "198" + "," + "1992");
          String data = FileOp.readCsv("E:/a.csv");
-         fileOp.toTxt("test.txt","hello wang");
-         fileOp.readTxt("test.txt");
+        System.out.println(data);
+         fileOp.toTxt("E:/test.txt","hello wang");
+         fileOp.readTxt("E:/test.txt");
     }
 }
