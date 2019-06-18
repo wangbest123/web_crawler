@@ -103,19 +103,25 @@ StringBuffer buffer = new StringBuffer();
     public static String readTxt(String fileName) {
         // 小萌萌实现 本地文件读入
 
-        File file = new File(fileName);
+        File file = new File("E:/data.txt");
+        Integer re   = null;
+        String line = null;
         try {
-            FileInputStream fis = new FileInputStream(file);
+           FileReader rs = new FileReader(file);
+            BufferedReader br = new BufferedReader(rs);
             try {
-                fis.read();
-                fis.close();
+
+                while ((line = br.readLine()) != null){
+                System.out.println(line);
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return "";
+        return line;
     }
 
     public static void main(String[] args) {
